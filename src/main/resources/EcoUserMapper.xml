@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fyxridd.lib.eco.mapper.EcoUserMapper">
+    <select id="exist" resultType="java.lang.Boolean">
+        select count(*) from eco_user where `name`=#{name};
+    </select>
+
+    <select id="selectAll" resultType="com.fyxridd.lib.eco.model.EcoUser">
+        select `name`,`money` from eco_user where name != "";
+    </select>
+
+    <insert id="insert">
+        insert into eco_user(`name`, `money`) values (#{name}, #{money});
+    </insert>
+
+    <update id="update">
+        update eco_user set `money`=#{money} where `name`=#{name};
+    </update>
+</mapper>

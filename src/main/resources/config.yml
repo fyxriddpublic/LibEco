@@ -1,0 +1,18 @@
+#特点:
+#  不分世界
+#  无银行
+
+#玩家钱上限,实数,>=0
+max: 10000000
+
+#四舍五入的小数位数,>=0,-1表示不四舍五入
+round: 2
+
+#对人友好的显示格式
+#变量{amount}
+format: "${amount}"
+
+#货币符号(单数形式)
+singularCurrencyName: "Dollar"
+#货币符号(复数形式)
+pluralCurrencyName: "Dollars"
