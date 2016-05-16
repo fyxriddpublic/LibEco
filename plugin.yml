@@ -1,0 +1,4 @@
+﻿name: LibEco
+main: com.fyxridd.lib.eco.EcoPlugin
+version: 0.1.0
+depend: [LibCore, LibConfig, LibLang]
