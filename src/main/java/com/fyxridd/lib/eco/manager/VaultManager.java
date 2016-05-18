@@ -1,9 +1,6 @@
 package com.fyxridd.lib.eco.manager;
 
-import com.fyxridd.lib.config.api.ConfigApi;
-import com.fyxridd.lib.config.manager.ConfigManager;
 import com.fyxridd.lib.eco.EcoPlugin;
-import com.fyxridd.lib.eco.config.EcoConfig;
 import net.milkbowl.vault.economy.AbstractEconomy;
 import net.milkbowl.vault.economy.EconomyResponse;
 
@@ -16,18 +13,6 @@ import java.util.List;
 public class VaultManager extends AbstractEconomy {
     public static final String ECO_NAME = "LibEco";
     private static final List<String> banks = new ArrayList<>();
-
-    private EcoConfig config;
-
-    public VaultManager() {
-        //添加配置监听
-        ConfigApi.addListener(EcoPlugin.instance.pn, EcoConfig.class, new ConfigManager.Setter<EcoConfig>() {
-            @Override
-            public void set(EcoConfig value) {
-                config = value;
-            }
-        });
-    }
 
     @Override
     public boolean isEnabled() {
@@ -46,22 +31,22 @@ public class VaultManager extends AbstractEconomy {
 
     @Override
     public int fractionalDigits() {
-        return config.getRound();
+        return EcoPlugin.instance.getEcoConfig().getRound();
     }
 
     @Override
     public String format(double amount) {
-        return config.getFormat().replace("{amount}", ""+amount);
+        return EcoPlugin.instance.getEcoConfig().getFormat().replace("{amount}", ""+amount);
     }
 
     @Override
     public String currencyNamePlural() {
-        return config.getPluralCurrencyName();
+        return EcoPlugin.instance.getEcoConfig().getPluralCurrencyName();
     }
 
     @Override
     public String currencyNameSingular() {
-        return config.getSingularCurrencyName();
+        return EcoPlugin.instance.getEcoConfig().getSingularCurrencyName();
     }
 
     @Override
