@@ -1,4 +1,4 @@
 ﻿name: LibEco
 main: com.fyxridd.lib.eco.EcoPlugin
 version: 0.1.0
-depend: [Vault, LibCore, LibConfig, LibSql]
+depend: [Vault, LibCore]

@@ -1,13 +1,13 @@
 package com.fyxridd.lib.eco;
 
-import com.fyxridd.lib.config.api.ConfigApi;
-import com.fyxridd.lib.config.manager.ConfigManager;
+import com.fyxridd.lib.core.api.SqlApi;
+import com.fyxridd.lib.core.api.config.ConfigApi;
 import com.fyxridd.lib.core.api.plugin.SimplePlugin;
+import com.fyxridd.lib.core.config.ConfigManager;
 import com.fyxridd.lib.eco.config.EcoConfig;
 import com.fyxridd.lib.eco.manager.DaoManager;
 import com.fyxridd.lib.eco.manager.EcoManager;
 import com.fyxridd.lib.eco.manager.VaultManager;
-import com.fyxridd.lib.sql.api.SqlApi;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.ServicePriority;

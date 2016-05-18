@@ -1,8 +1,8 @@
 package com.fyxridd.lib.eco.manager;
 
+import com.fyxridd.lib.core.api.SqlApi;
 import com.fyxridd.lib.eco.mapper.EcoUserMapper;
 import com.fyxridd.lib.eco.model.EcoUser;
-import com.fyxridd.lib.sql.api.SqlApi;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.Collection;
