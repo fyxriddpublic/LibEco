@@ -2,8 +2,8 @@ package com.fyxridd.lib.eco;
 
 import com.fyxridd.lib.core.api.SqlApi;
 import com.fyxridd.lib.core.api.config.ConfigApi;
+import com.fyxridd.lib.core.api.config.Setter;
 import com.fyxridd.lib.core.api.plugin.SimplePlugin;
-import com.fyxridd.lib.core.config.ConfigManager;
 import com.fyxridd.lib.eco.config.EcoConfig;
 import com.fyxridd.lib.eco.manager.DaoManager;
 import com.fyxridd.lib.eco.manager.EcoManager;
@@ -36,7 +36,7 @@ public class EcoPlugin extends SimplePlugin{
         //注册配置
         ConfigApi.register(pn, EcoConfig.class);
         //添加配置监听
-        ConfigApi.addListener(pn, EcoConfig.class, new ConfigManager.Setter<EcoConfig>() {
+        ConfigApi.addListener(pn, EcoConfig.class, new Setter<EcoConfig>() {
             @Override
             public void set(EcoConfig value) {
                 ecoConfig = value;
