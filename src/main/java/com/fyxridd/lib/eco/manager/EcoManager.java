@@ -1,9 +1,9 @@
 package com.fyxridd.lib.eco.manager;
 
-import com.fyxridd.lib.config.api.ConfigApi;
-import com.fyxridd.lib.config.manager.ConfigManager;
 import com.fyxridd.lib.core.api.PlayerApi;
-import com.fyxridd.lib.core.manager.realname.NotReadyException;
+import com.fyxridd.lib.core.api.config.ConfigApi;
+import com.fyxridd.lib.core.api.config.Setter;
+import com.fyxridd.lib.core.realname.NotReadyException;
 import com.fyxridd.lib.eco.EcoPlugin;
 import com.fyxridd.lib.eco.config.EcoConfig;
 import com.fyxridd.lib.eco.model.EcoUser;
@@ -35,7 +35,7 @@ public class EcoManager {
 
     public EcoManager() {
         //添加配置监听
-        ConfigApi.addListener(EcoPlugin.instance.pn, EcoConfig.class, new ConfigManager.Setter<EcoConfig>() {
+        ConfigApi.addListener(EcoPlugin.instance.pn, EcoConfig.class, new Setter<EcoConfig>() {
             @Override
             public void set(EcoConfig value) {
                 config = value;

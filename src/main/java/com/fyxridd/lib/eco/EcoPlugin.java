@@ -17,8 +17,8 @@ import java.io.File;
 public class EcoPlugin extends SimplePlugin{
     public static EcoPlugin instance;
 
-    private EcoManager ecoManager;
     private DaoManager daoManager;
+    private EcoManager ecoManager;
 
     private EcoConfig ecoConfig;
 
@@ -45,8 +45,8 @@ public class EcoPlugin extends SimplePlugin{
         //注册Mapper文件
         SqlApi.registerMapperXml(new File(dataPath, "EcoUserMapper.xml"));
 
-        ecoManager = new EcoManager();
         daoManager = new DaoManager();
+        ecoManager = new EcoManager();
 
         super.onEnable();
     }
