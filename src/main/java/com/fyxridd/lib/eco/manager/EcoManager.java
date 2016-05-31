@@ -3,7 +3,7 @@ package com.fyxridd.lib.eco.manager;
 import com.fyxridd.lib.core.api.PlayerApi;
 import com.fyxridd.lib.core.api.config.ConfigApi;
 import com.fyxridd.lib.core.api.config.Setter;
-import com.fyxridd.lib.core.realname.NotReadyException;
+import com.fyxridd.lib.core.api.exception.NotReadyException;
 import com.fyxridd.lib.eco.EcoPlugin;
 import com.fyxridd.lib.eco.config.EcoConfig;
 import com.fyxridd.lib.eco.model.EcoUser;
