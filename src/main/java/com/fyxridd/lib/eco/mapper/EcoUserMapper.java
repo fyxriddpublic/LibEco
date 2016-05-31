@@ -13,7 +13,7 @@ public interface EcoUserMapper {
      */
     Collection<EcoUser> selectAll();
 
-    void insert(@Param("user") EcoUser user);
+    void insert(EcoUser user);
 
-    void update(@Param("user") EcoUser user);
+    void update(EcoUser user);
 }
