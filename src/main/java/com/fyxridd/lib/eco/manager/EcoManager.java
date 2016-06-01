@@ -3,7 +3,6 @@ package com.fyxridd.lib.eco.manager;
 import com.fyxridd.lib.core.api.PlayerApi;
 import com.fyxridd.lib.core.api.config.ConfigApi;
 import com.fyxridd.lib.core.api.config.Setter;
-import com.fyxridd.lib.core.api.exception.NotReadyException;
 import com.fyxridd.lib.eco.EcoPlugin;
 import com.fyxridd.lib.eco.config.EcoConfig;
 import com.fyxridd.lib.eco.model.EcoUser;
@@ -49,15 +48,20 @@ public class EcoManager {
             Bukkit.getPluginManager().registerEvent(PluginDisableEvent.class, EcoPlugin.instance, EventPriority.NORMAL, new EventExecutor() {
                 @Override
                 public void execute(Listener listener, Event e) throws EventException {
-                    saveAll();
+                    if (e instanceof PluginDisableEvent) {
+                        PluginDisableEvent event = (PluginDisableEvent) e;
+                        if (event.getPlugin().getName().equals(EcoPlugin.instance.pn)) saveAll();
+                    }
                 }
             }, EcoPlugin.instance);
             //玩家进服事件
             Bukkit.getPluginManager().registerEvent(PlayerJoinEvent.class, EcoPlugin.instance, EventPriority.LOWEST, new EventExecutor() {
                 @Override
                 public void execute(Listener listener, Event e) throws EventException {
-                    PlayerJoinEvent event = (PlayerJoinEvent) e;
-                    init(event.getPlayer().getName());
+                    if (e instanceof PlayerJoinEvent) {
+                        PlayerJoinEvent event = (PlayerJoinEvent) e;
+                        init(event.getPlayer().getName());
+                    }
                 }
             }, EcoPlugin.instance);
         }
@@ -78,11 +82,7 @@ public class EcoManager {
     public EcoUser init(String name) {
         if (name == null) return null;
         //玩家存在性检测
-        try {
-            name = PlayerApi.getRealName(null, name);
-        } catch (NotReadyException e) {
-            return null;
-        }
+        name = PlayerApi.getRealName(null, name);
         if (name == null) return null;
 
         EcoUser user = ecoUsers.get(name);
@@ -106,11 +106,7 @@ public class EcoManager {
     public double get(String name) {
         if (name == null) return -1;
         //玩家存在性检测
-        try {
-            name = PlayerApi.getRealName(null, name);
-        } catch (NotReadyException e) {
-            return -1;
-        }
+        name = PlayerApi.getRealName(null, name);
         if (name == null) return -1;
 
         EcoUser eu = init(name);
@@ -142,11 +138,7 @@ public class EcoManager {
     public boolean set(String name, double amount) {
         if (name == null) return false;
         //玩家存在性检测
-        try {
-            name = PlayerApi.getRealName(null, name);
-        } catch (NotReadyException e) {
-            return false;
-        }
+        name = PlayerApi.getRealName(null, name);
         if (name == null) return false;
         //
         EcoUser eu = init(name);
@@ -180,11 +172,7 @@ public class EcoManager {
     public boolean add(String name, double amount) {
         if (name == null) return false;
         //玩家存在性检测
-        try {
-            name = PlayerApi.getRealName(null, name);
-        } catch (NotReadyException e) {
-            return false;
-        }
+        name = PlayerApi.getRealName(null, name);
         if (name == null) return false;
         //
         if (amount <= 0) return true;
@@ -217,11 +205,7 @@ public class EcoManager {
     public boolean del(String name, double amount) {
         if (name == null) return false;
         //玩家存在性检测
-        try {
-            name = PlayerApi.getRealName(null, name);
-        } catch (NotReadyException e) {
-            return false;
-        }
+        name = PlayerApi.getRealName(null, name);
         if (name == null) return false;
         //
         if (amount <= 0) return true;
